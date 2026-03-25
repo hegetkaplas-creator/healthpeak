@@ -1,142 +1,170 @@
-(function () {
-  const formAnchor = document.querySelector('#lead-form');
-  const stickyCta = document.querySelector('#stickyCta');
-  const scrollButtons = document.querySelectorAll('.scroll-to-form');
-  const forms = document.querySelectorAll('.lead-form');
-  const faqQuestions = document.querySelectorAll('.faq-question');
-  const revealItems = document.querySelectorAll('.reveal');
+document.addEventListener("DOMContentLoaded", () => {
+  const formSection = document.getElementById("form-section");
+  const stickyCta = document.getElementById("stickyCta");
+  const scrollButtons = document.querySelectorAll(".scroll-to-form");
+  const revealItems = document.querySelectorAll(".reveal");
+  const faqItems = document.querySelectorAll(".faq-item");
+  const leadForm = document.getElementById("leadForm");
+  const nameInput = document.getElementById("name");
+  const phoneInput = document.getElementById("phone");
+  const nameError = document.getElementById("nameError");
+  const phoneError = document.getElementById("phoneError");
+  const formSuccess = document.getElementById("formSuccess");
 
-  function smoothScrollToForm(event) {
-    if (event) event.preventDefault();
-    if (!formAnchor) return;
-
-    formAnchor.scrollIntoView({
-      behavior: 'smooth',
-      block: 'start'
+  function scrollToForm() {
+    if (!formSection) return;
+    formSection.scrollIntoView({
+      behavior: "smooth",
+      block: "start"
     });
   }
 
   scrollButtons.forEach((button) => {
-    button.addEventListener('click', smoothScrollToForm);
-  });
-
-  function validateName(value) {
-    return value.trim().length >= 2;
-  }
-
-  function normalizePhone(value) {
-    return value.replace(/[^\d+]/g, '').trim();
-  }
-
-  function validatePhone(value) {
-    const normalized = normalizePhone(value);
-    const digitsOnly = normalized.replace(/\D/g, '');
-    return digitsOnly.length >= 9;
-  }
-
-  function setMessage(container, text, type) {
-    if (!container) return;
-    container.textContent = text;
-    container.className = 'form-message ' + type;
-  }
-
-  forms.forEach((form) => {
-    form.addEventListener('submit', function (event) {
-      event.preventDefault();
-
-      const nameInput = form.querySelector('input[name="name"]');
-      const phoneInput = form.querySelector('input[name="phone"]');
-      const message = form.querySelector('.form-message');
-
-      const name = nameInput ? nameInput.value : '';
-      const phone = phoneInput ? phoneInput.value : '';
-
-      if (!validateName(name)) {
-        setMessage(message, 'Silakan isi nama minimal 2 karakter.', 'error');
-        if (nameInput) nameInput.focus();
-        return;
-      }
-
-      if (!validatePhone(phone)) {
-        setMessage(message, 'Silakan isi nomor telepon yang valid.', 'error');
-        if (phoneInput) phoneInput.focus();
-        return;
-      }
-
-      setMessage(
-        message,
-        'Data siap dikirim. Hubungkan submit handler ini ke backend / endpoint Anda.',
-        'success'
-      );
-
-      /*
-        TODO:
-        Hubungkan pengiriman data ke backend di sini.
-        Contoh alur:
-        1. Ambil nilai form
-        2. Kirim via fetch() ke endpoint Anda
-        3. Tampilkan status sukses / gagal
-      */
-
-      console.log('Lead form payload:', {
-        name: name.trim(),
-        phone: normalizePhone(phone)
-      });
-    });
-  });
-
-  faqQuestions.forEach((button) => {
-    button.addEventListener('click', function () {
-      const parent = button.closest('.faq-item');
-      if (!parent) return;
-
-      const isActive = parent.classList.contains('active');
-
-      faqQuestions.forEach((q) => {
-        const item = q.closest('.faq-item');
-        if (item) item.classList.remove('active');
-      });
-
-      if (!isActive) {
-        parent.classList.add('active');
-      }
-    });
+    button.addEventListener("click", scrollToForm);
   });
 
   function handleStickyVisibility() {
-    if (!stickyCta || !formAnchor) return;
+    if (!stickyCta || !formSection) return;
 
-    const rect = formAnchor.getBoundingClientRect();
+    const formRect = formSection.getBoundingClientRect();
     const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
 
-    // Прячем sticky CTA, когда пользователь уже рядом с основной формой
-    const nearForm = rect.top < viewportHeight * 0.7 && rect.bottom > 0;
+    const formVisible = formRect.top < viewportHeight * 0.75 && formRect.bottom > viewportHeight * 0.15;
+    const nearTop = window.scrollY < 120;
 
-    if (nearForm) {
-      stickyCta.classList.add('hidden');
+    if (formVisible || nearTop) {
+      stickyCta.classList.add("hidden");
     } else {
-      stickyCta.classList.remove('hidden');
+      stickyCta.classList.remove("hidden");
     }
   }
 
-  window.addEventListener('scroll', handleStickyVisibility, { passive: true });
-  window.addEventListener('resize', handleStickyVisibility);
   handleStickyVisibility();
+  window.addEventListener("scroll", handleStickyVisibility, { passive: true });
+  window.addEventListener("resize", handleStickyVisibility);
 
-  if ('IntersectionObserver' in window && revealItems.length) {
-    const observer = new IntersectionObserver((entries, obs) => {
+  if ("IntersectionObserver" in window) {
+    const revealObserver = new IntersectionObserver((entries, observer) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          entry.target.classList.add('in-view');
-          obs.unobserve(entry.target);
+          entry.target.classList.add("is-visible");
+          observer.unobserve(entry.target);
         }
       });
     }, {
       threshold: 0.12
     });
 
-    revealItems.forEach((item) => observer.observe(item));
+    revealItems.forEach((item) => revealObserver.observe(item));
   } else {
-    revealItems.forEach((item) => item.classList.add('in-view'));
+    revealItems.forEach((item) => item.classList.add("is-visible"));
   }
-})();
+
+  faqItems.forEach((item) => {
+    const button = item.querySelector(".faq-question");
+    const answer = item.querySelector(".faq-answer");
+
+    if (!button || !answer) return;
+
+    button.addEventListener("click", () => {
+      const isActive = item.classList.contains("active");
+
+      faqItems.forEach((faq) => {
+        faq.classList.remove("active");
+        const faqButton = faq.querySelector(".faq-question");
+        const faqAnswer = faq.querySelector(".faq-answer");
+
+        if (faqButton) faqButton.setAttribute("aria-expanded", "false");
+        if (faqAnswer) faqAnswer.style.maxHeight = null;
+      });
+
+      if (!isActive) {
+        item.classList.add("active");
+        button.setAttribute("aria-expanded", "true");
+        answer.style.maxHeight = `${answer.scrollHeight}px`;
+      }
+    });
+  });
+
+  function validateName(value) {
+    const cleaned = value.trim();
+    if (cleaned.length < 2) {
+      return "Masukkan nama yang valid.";
+    }
+    return "";
+  }
+
+  function validatePhone(value) {
+    const cleaned = value.replace(/[^\d+]/g, "").trim();
+    const digitsOnly = cleaned.replace(/\D/g, "");
+
+    if (digitsOnly.length < 9) {
+      return "Masukkan nomor telepon yang valid.";
+    }
+
+    return "";
+  }
+
+  function showFieldError(field, errorElement, message) {
+    if (!field || !errorElement) return;
+    errorElement.textContent = message;
+    field.setAttribute("aria-invalid", message ? "true" : "false");
+  }
+
+  if (nameInput) {
+    nameInput.addEventListener("input", () => {
+      showFieldError(nameInput, nameError, validateName(nameInput.value));
+    });
+  }
+
+  if (phoneInput) {
+    phoneInput.addEventListener("input", () => {
+      showFieldError(phoneInput, phoneError, validatePhone(phoneInput.value));
+    });
+  }
+
+  if (leadForm) {
+    leadForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      const nameValue = nameInput ? nameInput.value : "";
+      const phoneValue = phoneInput ? phoneInput.value : "";
+
+      const nameValidationMessage = validateName(nameValue);
+      const phoneValidationMessage = validatePhone(phoneValue);
+
+      showFieldError(nameInput, nameError, nameValidationMessage);
+      showFieldError(phoneInput, phoneError, phoneValidationMessage);
+
+      if (nameValidationMessage || phoneValidationMessage) {
+        formSuccess.style.display = "none";
+        return;
+      }
+
+      const payload = {
+        name: nameValue.trim(),
+        phone: phoneValue.trim()
+      };
+
+      // Hubungkan di sini ke backend / endpoint pengiriman form.
+      // Contoh:
+      // fetch("YOUR_ENDPOINT_HERE", {
+      //   method: "POST",
+      //   headers: { "Content-Type": "application/json" },
+      //   body: JSON.stringify(payload)
+      // })
+
+      console.log("Lead form payload:", payload);
+
+      formSuccess.style.display = "block";
+      formSuccess.scrollIntoView({
+        behavior: "smooth",
+        block: "nearest"
+      });
+
+      leadForm.reset();
+      showFieldError(nameInput, nameError, "");
+      showFieldError(phoneInput, phoneError, "");
+    });
+  }
+});
