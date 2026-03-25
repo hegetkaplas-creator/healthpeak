@@ -1,0 +1,1393 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Healthpeak — Dukungan Vitalitas Pria Alami</title>
+  <meta name="description" content="Healthpeak membantu mendukung vitalitas pria, stamina, sirkulasi, dan rasa percaya diri secara alami." />
+  <style>
+    :root {
+      --bg: #f6f7f3;
+      --card: #ffffff;
+      --text: #18211b;
+      --muted: #5c675f;
+      --green: #1f6b45;
+      --green-dark: #174f34;
+      --green-soft: #e8f3ec;
+      --red: #b9362e;
+      --red-soft: #fff1ef;
+      --gold: #d4a84f;
+      --line: #dde5dc;
+      --shadow: 0 10px 30px rgba(18, 31, 23, 0.08);
+      --radius: 18px;
+      --radius-sm: 12px;
+      --max: 1120px;
+      --sticky-h: 72px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.45;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+      padding-bottom: calc(var(--sticky-h) + 18px);
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(100% - 24px, var(--max));
+      margin: 0 auto;
+    }
+
+    .section {
+      padding: 18px 0;
+    }
+
+    .badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: #eef4ef;
+      border: 1px solid #d6e4d9;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--green-dark);
+    }
+
+    .hero {
+      padding-top: 14px;
+    }
+
+    .hero-wrap {
+      display: grid;
+      gap: 14px;
+      align-items: start;
+    }
+
+    .hero-card {
+      background: linear-gradient(180deg, #ffffff 0%, #f9fbf8 100%);
+      border: 1px solid #e2e9e2;
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .hero-content {
+      padding: 18px;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--red);
+      background: var(--red-soft);
+      border: 1px solid #f1d2ce;
+      padding: 8px 10px;
+      border-radius: 999px;
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      margin: 0 0 10px;
+      font-size: 31px;
+      line-height: 1.08;
+      letter-spacing: -0.02em;
+    }
+
+    .hero-sub {
+      margin: 0 0 14px;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .pain-list {
+      margin: 0 0 16px;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 9px;
+    }
+
+    .pain-list li {
+      display: grid;
+      grid-template-columns: 22px 1fr;
+      gap: 9px;
+      align-items: start;
+      font-size: 14px;
+      color: var(--text);
+    }
+
+    .pain-list .dot {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--red-soft);
+      color: var(--red);
+      font-size: 12px;
+      font-weight: 900;
+      margin-top: 1px;
+    }
+
+    .cta-row {
+      display: grid;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+
+    .btn,
+    button.btn {
+      appearance: none;
+      border: 0;
+      cursor: pointer;
+      width: 100%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 52px;
+      padding: 14px 18px;
+      border-radius: 14px;
+      background: linear-gradient(180deg, #c94238 0%, #a82f28 100%);
+      color: #fff;
+      font-weight: 800;
+      font-size: 16px;
+      text-align: center;
+      box-shadow: 0 10px 18px rgba(169, 44, 36, 0.22);
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
+    }
+
+    .btn:hover,
+    button.btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 12px 20px rgba(169, 44, 36, 0.28);
+    }
+
+    .btn.secondary {
+      background: linear-gradient(180deg, #246b46 0%, #184d33 100%);
+      box-shadow: 0 10px 18px rgba(24, 77, 51, 0.2);
+    }
+
+    .hero-grid {
+      display: grid;
+      gap: 12px;
+    }
+
+    .mini-form {
+      background: var(--card);
+      border: 1px solid #dde6dd;
+      border-radius: 18px;
+      padding: 14px;
+    }
+
+    .mini-form-title {
+      margin: 0 0 10px;
+      font-size: 15px;
+      font-weight: 800;
+    }
+
+    .field {
+      margin-bottom: 10px;
+    }
+
+    .field label {
+      display: block;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+
+    .field input {
+      width: 100%;
+      min-height: 48px;
+      border-radius: 12px;
+      border: 1px solid #ccd8cd;
+      background: #fff;
+      padding: 0 14px;
+      font-size: 15px;
+      color: var(--text);
+      outline: none;
+      transition: border-color 0.18s ease, box-shadow 0.18s ease;
+    }
+
+    .field input:focus {
+      border-color: var(--green);
+      box-shadow: 0 0 0 4px rgba(31, 107, 69, 0.1);
+    }
+
+    .micro-trust {
+      display: grid;
+      gap: 7px;
+      margin-top: 10px;
+    }
+
+    .micro-trust span {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .hero-visual {
+      position: relative;
+      border-top: 1px solid #e5ece5;
+      background: linear-gradient(180deg, #eef4ef 0%, #e2eee4 100%);
+      padding: 14px;
+    }
+
+    .hero-visual-wrap {
+      position: relative;
+      border-radius: 18px;
+      overflow: hidden;
+      background: #dfe8e2;
+      min-height: 280px;
+    }
+
+    .hero-visual-wrap img.hero-man {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      min-height: 280px;
+    }
+
+    .product-float {
+      position: absolute;
+      right: 10px;
+      bottom: 10px;
+      width: 118px;
+      max-width: 33%;
+      background: rgba(255, 255, 255, 0.94);
+      border: 1px solid rgba(255,255,255,0.8);
+      border-radius: 16px;
+      padding: 8px;
+      box-shadow: 0 12px 22px rgba(24, 37, 28, 0.16);
+    }
+
+    .product-float img {
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    .trust-strip {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .trust-item {
+      background: #fff;
+      border: 1px solid #e1e8e1;
+      border-radius: 14px;
+      padding: 10px 12px;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--green-dark);
+      text-align: center;
+    }
+
+    .section-title {
+      margin: 0 0 8px;
+      font-size: 25px;
+      line-height: 1.14;
+      letter-spacing: -0.02em;
+    }
+
+    .section-sub {
+      margin: 0 0 14px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .split-card {
+      background: var(--card);
+      border: 1px solid #e1e8e1;
+      border-radius: 22px;
+      padding: 18px;
+      box-shadow: var(--shadow);
+    }
+
+    .reason-grid,
+    .mechanism-grid,
+    .timeline-grid,
+    .ingredient-grid,
+    .testi-grid,
+    .faq-grid {
+      display: grid;
+      gap: 12px;
+    }
+
+    .reason-card,
+    .mechanism-card,
+    .timeline-card,
+    .ingredient-card,
+    .testi-card,
+    .offer-card,
+    .faq-item,
+    .summary-box {
+      background: var(--card);
+      border: 1px solid #e1e8e1;
+      border-radius: 18px;
+      padding: 16px;
+      box-shadow: var(--shadow);
+    }
+
+    .reason-card strong,
+    .mechanism-card strong,
+    .timeline-card strong,
+    .ingredient-card strong,
+    .faq-item strong {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 16px;
+    }
+
+    .reason-card p,
+    .mechanism-card p,
+    .timeline-card p,
+    .ingredient-card p,
+    .testi-card p,
+    .faq-item p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .icon-circle {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 10px;
+      background: var(--green-soft);
+      color: var(--green-dark);
+      font-size: 20px;
+      font-weight: 900;
+    }
+
+    .alert-box {
+      background: linear-gradient(180deg, #fff7f5 0%, #fff1ee 100%);
+      border: 1px solid #f3d4cf;
+      border-left: 4px solid var(--red);
+      border-radius: 18px;
+      padding: 14px;
+      font-size: 14px;
+      color: #603530;
+      margin-top: 14px;
+      font-weight: 700;
+    }
+
+    .why-healthpeak {
+      display: grid;
+      gap: 14px;
+    }
+
+    .why-healthpeak .product-panel {
+      background: var(--card);
+      border: 1px solid #e1e8e1;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .product-media {
+      background: linear-gradient(180deg, #f4f7f1 0%, #e7efe7 100%);
+      padding: 16px;
+    }
+
+    .product-media img {
+      width: 100%;
+      max-width: 260px;
+      margin: 0 auto;
+      border-radius: 16px;
+    }
+
+    .product-copy {
+      padding: 16px;
+    }
+
+    .bullet-checks {
+      margin: 12px 0 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 10px;
+    }
+
+    .bullet-checks li {
+      display: grid;
+      grid-template-columns: 24px 1fr;
+      gap: 10px;
+      align-items: start;
+      font-size: 14px;
+      color: var(--text);
+    }
+
+    .check {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: #ebf5ee;
+      color: var(--green);
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .system-media {
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid #dfe7df;
+      background: #edf4ef;
+      margin-top: 14px;
+    }
+
+    .system-media img {
+      width: 100%;
+      height: auto;
+    }
+
+    .stat-line {
+      margin-top: 12px;
+      padding: 12px 14px;
+      border-radius: 14px;
+      background: #f5f9f5;
+      border: 1px solid #dde8de;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--green-dark);
+    }
+
+    .timeline-card {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .timeline-label {
+      display: inline-block;
+      margin-bottom: 8px;
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--green);
+      background: var(--green-soft);
+      padding: 7px 10px;
+      border-radius: 999px;
+    }
+
+    .timeline-highlight {
+      margin-top: 10px;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--red);
+    }
+
+    .testi-card {
+      position: relative;
+    }
+
+    .testi-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+
+    .testi-name {
+      font-size: 15px;
+      font-weight: 800;
+    }
+
+    .testi-city {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .stars {
+      color: var(--gold);
+      font-size: 14px;
+      letter-spacing: 0.05em;
+      white-space: nowrap;
+    }
+
+    .before-after {
+      margin-top: 10px;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--green-dark);
+      background: #f5f9f5;
+      border: 1px solid #dce7dd;
+      border-radius: 12px;
+      padding: 10px 12px;
+    }
+
+    .offer-wrap {
+      display: grid;
+      gap: 14px;
+    }
+
+    .offer-card.highlight {
+      background: linear-gradient(180deg, #1f6b45 0%, #174f34 100%);
+      color: #fff;
+      border-color: rgba(255,255,255,0.08);
+    }
+
+    .offer-card.highlight p,
+    .offer-card.highlight .offer-note,
+    .offer-card.highlight .price-old {
+      color: rgba(255,255,255,0.82);
+    }
+
+    .offer-badge {
+      display: inline-block;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.14);
+      border: 1px solid rgba(255,255,255,0.18);
+      font-size: 12px;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+
+    .offer-title {
+      margin: 0 0 8px;
+      font-size: 26px;
+      line-height: 1.12;
+    }
+
+    .price-box {
+      display: flex;
+      align-items: flex-end;
+      gap: 14px;
+      margin: 14px 0;
+      flex-wrap: wrap;
+    }
+
+    .price-old {
+      font-size: 15px;
+      text-decoration: line-through;
+    }
+
+    .price-new {
+      font-size: 34px;
+      font-weight: 900;
+      line-height: 1;
+    }
+
+    .discount-chip {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 14px;
+      border-radius: 12px;
+      background: #fff4ca;
+      color: #6a4a04;
+      font-size: 14px;
+      font-weight: 900;
+      border: 1px solid #f0dfa0;
+    }
+
+    .offer-note {
+      font-size: 14px;
+    }
+
+    .urgency {
+      margin-top: 12px;
+      padding: 12px 14px;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.16);
+      border-radius: 14px;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .form-section {
+      scroll-margin-top: 20px;
+    }
+
+    .form-box {
+      background: linear-gradient(180deg, #ffffff 0%, #fbfcfa 100%);
+      border: 1px solid #e1e8e1;
+      border-radius: 22px;
+      padding: 18px;
+      box-shadow: var(--shadow);
+    }
+
+    .form-topline {
+      display: inline-block;
+      margin-bottom: 10px;
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--red);
+      background: var(--red-soft);
+      border: 1px solid #f1d2ce;
+      padding: 8px 10px;
+      border-radius: 999px;
+    }
+
+    .form-title {
+      margin: 0 0 8px;
+      font-size: 26px;
+      line-height: 1.12;
+    }
+
+    .form-sub {
+      margin: 0 0 14px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .submit-note,
+    .form-message {
+      margin-top: 10px;
+      font-size: 13px;
+      font-weight: 700;
+      display: none;
+    }
+
+    .form-message.error {
+      color: var(--red);
+      display: block;
+    }
+
+    .form-message.success {
+      color: var(--green);
+      display: block;
+    }
+
+    .faq-item {
+      padding: 0;
+      overflow: hidden;
+    }
+
+    .faq-question {
+      width: 100%;
+      border: 0;
+      background: transparent;
+      padding: 16px;
+      text-align: left;
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--text);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .faq-answer {
+      padding: 0 16px 16px;
+      color: var(--muted);
+      font-size: 14px;
+      display: none;
+    }
+
+    .faq-item.active .faq-answer {
+      display: block;
+    }
+
+    .faq-item.active .faq-toggle {
+      transform: rotate(45deg);
+    }
+
+    .faq-toggle {
+      transition: transform 0.2s ease;
+      font-size: 22px;
+      color: var(--green);
+      line-height: 1;
+    }
+
+    .footer-note {
+      text-align: center;
+      color: #6a746c;
+      font-size: 12px;
+      padding: 18px 0 8px;
+    }
+
+    .sticky-cta {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 50;
+      padding: 10px 12px calc(10px + env(safe-area-inset-bottom));
+      background: rgba(246, 247, 243, 0.96);
+      backdrop-filter: blur(8px);
+      border-top: 1px solid rgba(188, 199, 189, 0.8);
+      transform: translateY(0);
+      transition: transform 0.22s ease, opacity 0.22s ease;
+    }
+
+    .sticky-cta.hidden {
+      transform: translateY(110%);
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .sticky-inner {
+      width: min(100% - 8px, 760px);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 10px;
+      align-items: center;
+      background: #ffffff;
+      border: 1px solid #dfe7df;
+      border-radius: 16px;
+      padding: 10px;
+      box-shadow: 0 10px 24px rgba(24, 37, 28, 0.1);
+    }
+
+    .sticky-copy {
+      min-width: 0;
+    }
+
+    .sticky-title {
+      font-size: 13px;
+      font-weight: 900;
+      line-height: 1.2;
+    }
+
+    .sticky-sub {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    .sticky-button {
+      min-width: 146px;
+      min-height: 46px;
+      padding: 12px 14px;
+      border-radius: 12px;
+      border: 0;
+      background: linear-gradient(180deg, #c94238 0%, #a82f28 100%);
+      color: #fff;
+      font-size: 14px;
+      font-weight: 800;
+      cursor: pointer;
+      box-shadow: 0 10px 18px rgba(169, 44, 36, 0.22);
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.45s ease, transform 0.45s ease;
+    }
+
+    .reveal.in-view {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (min-width: 700px) {
+      body {
+        padding-bottom: 98px;
+      }
+
+      .hero-wrap {
+        grid-template-columns: 1.06fr 0.94fr;
+      }
+
+      .hero-visual {
+        border-top: 0;
+        border-left: 1px solid #e5ece5;
+        height: 100%;
+      }
+
+      .hero-visual-wrap,
+      .hero-visual-wrap img.hero-man {
+        min-height: 100%;
+        height: 100%;
+      }
+
+      .reason-grid,
+      .mechanism-grid,
+      .timeline-grid,
+      .ingredient-grid,
+      .testi-grid,
+      .faq-grid,
+      .offer-wrap {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .why-healthpeak {
+        grid-template-columns: 0.98fr 1.02fr;
+        align-items: start;
+      }
+
+      .trust-strip {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    @media (max-width: 420px) {
+      h1 {
+        font-size: 28px;
+      }
+
+      .section-title,
+      .form-title,
+      .offer-title {
+        font-size: 23px;
+      }
+
+      .sticky-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .sticky-button {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <main>
+
+    <section class="section hero">
+      <div class="container">
+        <div class="hero-card reveal">
+          <div class="hero-wrap">
+            <div class="hero-content">
+              <div class="badge-row">
+                <span class="badge">Herbal support pria 30+</span>
+                <span class="badge">Tongkat Ali + formula pendukung</span>
+              </div>
+
+              <span class="eyebrow">Bukan cuma capek biasa</span>
+
+              <h1>Kalau tubuh sudah tidak sekuat dulu, jangan tunggu sampai rasa percaya diri ikut turun.</h1>
+
+              <p class="hero-sub">
+                Banyak pria mulai merasakannya setelah usia 30–35:
+                energi cepat habis, respon tubuh tidak sestabil dulu, dan hubungan dengan pasangan ikut terasa berbeda.
+              </p>
+
+              <ul class="pain-list">
+                <li><span class="dot">!</span><span>Cepat lelah, fokus turun, badan terasa “drop” di waktu yang tidak tepat</span></li>
+                <li><span class="dot">!</span><span>Respon tubuh pria tidak konsisten dan bikin makin tidak nyaman</span></li>
+                <li><span class="dot">!</span><span>Mulai menghindari momen dekat karena takut hasilnya tidak seperti harapan</span></li>
+              </ul>
+
+              <div class="cta-row">
+                <a class="btn scroll-to-form" href="#lead-form">Konsultasi / Pesan Sekarang</a>
+              </div>
+
+              <div class="hero-grid">
+                <form class="mini-form lead-form" novalidate>
+                  <p class="mini-form-title">Isi data sekarang, promo diskon 50% masih tersedia hari ini</p>
+
+                  <div class="field">
+                    <label for="hero-name">Nama</label>
+                    <input id="hero-name" name="name" type="text" placeholder="Masukkan nama Anda" />
+                  </div>
+
+                  <div class="field">
+                    <label for="hero-phone">Nomor Telepon</label>
+                    <input id="hero-phone" name="phone" type="tel" inputmode="tel" placeholder="08xxxxxxxxxx" />
+                  </div>
+
+                  <button type="submit" class="btn secondary">Saya Mau Dihubungi</button>
+
+                  <div class="micro-trust">
+                    <span>✔ Konsultasi gratis</span>
+                    <span>✔ Data Anda aman</span>
+                    <span>✔ Konfirmasi via telepon</span>
+                    <span>✔ Promo terbatas hari ini</span>
+                  </div>
+
+                  <div class="form-message" aria-live="polite"></div>
+                </form>
+
+                <div class="trust-strip">
+                  <div class="trust-item">Natural support dari dalam</div>
+                  <div class="trust-item">Cocok untuk pria 30+</div>
+                  <div class="trust-item">Fokus pada vitalitas & stamina</div>
+                  <div class="trust-item">Mudah dipesan via form</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="hero-visual">
+              <div class="hero-visual-wrap">
+                <img class="hero-man" src="hero-man.webp" alt="Pria Indonesia dewasa dengan ekspresi serius dan tegas" />
+                <div class="product-float">
+                  <img src="product-bottle.webp" alt="Botol produk Healthpeak" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="split-card reveal">
+          <h2 class="section-title">Kenapa ini mulai terasa setelah usia 30–35?</h2>
+          <p class="section-sub">
+            Bukan karena Anda “lemah”. Biasanya ada kombinasi penyebab yang pelan-pelan bikin performa tubuh pria menurun.
+          </p>
+
+          <div class="reason-grid">
+            <div class="reason-card">
+              <div class="icon-circle">😵</div>
+              <strong>Stres menumpuk</strong>
+              <p>Saat pikiran terus tegang, tubuh lebih cepat habis tenaga dan respon jadi tidak stabil.</p>
+            </div>
+
+            <div class="reason-card">
+              <div class="icon-circle">😴</div>
+              <strong>Kurang tidur</strong>
+              <p>Istirahat yang berantakan bikin pemulihan tubuh menurun dan energi tidak kembali penuh.</p>
+            </div>
+
+            <div class="reason-card">
+              <div class="icon-circle">🕒</div>
+              <strong>Usia bertambah</strong>
+              <p>Setelah 30+, dukungan alami dari dalam memang bisa menurun kalau tidak dijaga.</p>
+            </div>
+
+            <div class="reason-card">
+              <div class="icon-circle">🩸</div>
+              <strong>Sirkulasi kurang optimal</strong>
+              <p>Saat aliran tidak sebaik dulu, tubuh pria biasanya merespon lebih lambat dan kurang mantap.</p>
+            </div>
+          </div>
+
+          <div class="alert-box">
+            Masalahnya sering datang pelan-pelan. Awalnya cuma capek, lalu rasa percaya diri ikut turun. Karena itu, banyak pria baru sadar saat kondisinya sudah mengganggu hubungan dan kenyamanan diri sendiri.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="why-healthpeak reveal">
+          <div class="product-panel">
+            <div class="product-media">
+              <img src="product-bottle.webp" alt="Healthpeak botol dan kemasan produk" />
+            </div>
+            <div class="product-copy">
+              <span class="eyebrow">Natural support untuk pria</span>
+              <h2 class="section-title">Kenapa banyak pria memilih Healthpeak?</h2>
+              <p class="section-sub">
+                Karena Healthpeak tidak mengandalkan satu bahan saja. Ini formula herbal yang dirancang untuk mendukung vitalitas pria dari beberapa sisi sekaligus.
+              </p>
+
+              <ul class="bullet-checks">
+                <li><span class="check">✓</span><span><strong>Tongkat Ali</strong> dikenal luas sebagai bahan herbal pendukung vitalitas pria.</span></li>
+                <li><span class="check">✓</span><span><strong>Purwoceng</strong> membantu melengkapi dukungan stamina harian.</span></li>
+                <li><span class="check">✓</span><span><strong>Jahe merah & lada hitam</strong> mendukung sirkulasi dan kenyamanan tubuh.</span></li>
+                <li><span class="check">✓</span><span><strong>Formula pendukung alami</strong>, bukan sekadar sensasi sesaat.</span></li>
+              </ul>
+
+              <div class="stat-line">
+                Healthpeak cocok untuk pria yang ingin merasa lebih stabil, lebih siap, dan lebih percaya diri — tanpa pendekatan yang terasa “dipaksa”.
+              </div>
+            </div>
+          </div>
+
+          <div class="split-card">
+            <span class="eyebrow">Warisan herbal, dibuat lebih relevan</span>
+            <h2 class="section-title">Bukan janji instan. Tapi dukungan alami yang masuk akal.</h2>
+            <p class="section-sub">
+              Di Indonesia, bahan herbal seperti Tongkat Ali sudah lama dikenal dalam angle vitalitas pria. Healthpeak membawa pendekatan itu ke formula yang lebih praktis untuk penggunaan rutin.
+            </p>
+
+            <div class="ingredient-grid">
+              <div class="ingredient-card">
+                <strong>Tongkat Ali</strong>
+                <p>Bahan utama yang identik dengan dukungan tenaga, vitalitas, dan performa pria.</p>
+              </div>
+
+              <div class="ingredient-card">
+                <strong>Purwoceng</strong>
+                <p>Herbal lokal yang sering dikaitkan dengan stamina dan daya tahan tubuh pria.</p>
+              </div>
+
+              <div class="ingredient-card">
+                <strong>Jahe merah</strong>
+                <p>Membantu tubuh terasa lebih “hangat” dan mendukung sirkulasi harian.</p>
+              </div>
+
+              <div class="ingredient-card">
+                <strong>Lada hitam</strong>
+                <p>Membantu penyerapan formula agar dukungan terasa lebih optimal.</p>
+              </div>
+            </div>
+
+            <div class="system-media">
+              <img src="ingredients-system.webp" alt="Ilustrasi sistem dukungan herbal untuk vitalitas pria" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="split-card reveal">
+          <h2 class="section-title">Bagaimana Healthpeak bekerja di tubuh?</h2>
+          <p class="section-sub">
+            Simpel: bukan sekadar bikin sensasi cepat, tapi membantu tubuh pria bekerja lebih stabil dari dalam.
+          </p>
+
+          <div class="mechanism-grid">
+            <div class="mechanism-card">
+              <div class="icon-circle">🩸</div>
+              <strong>Membantu sirkulasi darah</strong>
+              <p>Sirkulasi yang lebih baik mendukung respon tubuh pria terasa lebih siap dan lebih mantap.</p>
+            </div>
+
+            <div class="mechanism-card">
+              <div class="icon-circle">⚡</div>
+              <strong>Membantu energi & stamina</strong>
+              <p>Tubuh tidak gampang “drop”, sehingga tenaga harian lebih terjaga.</p>
+            </div>
+
+            <div class="mechanism-card">
+              <div class="icon-circle">🔄</div>
+              <strong>Membantu respon tubuh lebih stabil</strong>
+              <p>Bukan meledak sebentar lalu turun, tapi membantu tubuh merespon lebih konsisten.</p>
+            </div>
+
+            <div class="mechanism-card">
+              <div class="icon-circle">🛡️</div>
+              <strong>Mendukung rasa percaya diri</strong>
+              <p>Saat tubuh terasa lebih siap, pikiran ikut lebih tenang dan Anda tidak gampang ragu.</p>
+            </div>
+          </div>
+
+          <div class="alert-box">
+            Yang dicari kebanyakan pria bukan efek heboh sesaat, tapi kondisi tubuh yang kembali terasa “siap” secara alami. Di situlah Healthpeak dibuat untuk membantu.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="split-card reveal">
+          <h2 class="section-title">Kapan perubahan biasanya mulai terasa?</h2>
+          <p class="section-sub">
+            Hasil tiap orang bisa berbeda, tapi penggunaan rutin biasanya lebih mudah dirasakan dengan alur seperti ini:
+          </p>
+
+          <div class="timeline-grid">
+            <div class="timeline-card">
+              <span class="timeline-label">Hari-hari awal</span>
+              <strong>Tubuh mulai terasa lebih “ringan”</strong>
+              <p>Sebagian pria mulai merasa badan tidak seberat biasanya, lebih nyaman bergerak, dan mood lebih stabil.</p>
+              <div class="timeline-highlight">Fokus awal: adaptasi tubuh + rasa lebih siap</div>
+            </div>
+
+            <div class="timeline-card">
+              <span class="timeline-label">Minggu pertama</span>
+              <strong>Energi harian mulai lebih terjaga</strong>
+              <p>Tenaga terasa tidak cepat habis, respon tubuh mulai lebih teratur, dan rasa percaya diri perlahan naik.</p>
+              <div class="timeline-highlight">Fokus awal: stamina + respon lebih stabil</div>
+            </div>
+
+            <div class="timeline-card">
+              <span class="timeline-label">Minggu 2–3</span>
+              <strong>Perubahan makin terasa saat dipakai rutin</strong>
+              <p>Banyak pria mulai merasa performa lebih siap, tubuh lebih konsisten, dan kedekatan dengan pasangan terasa lebih nyaman.</p>
+              <div class="timeline-highlight">Fokus utama: vitalitas + kepercayaan diri</div>
+            </div>
+
+            <div class="timeline-card">
+              <span class="timeline-label">Penggunaan rutin</span>
+              <strong>Bukan instan, tapi lebih masuk akal</strong>
+              <p>Pendekatan alami biasanya terasa lebih baik saat digunakan konsisten, bukan berharap efek sekali pakai.</p>
+              <div class="timeline-highlight">Semakin rutin, semakin terasa dukungannya</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="split-card reveal">
+          <h2 class="section-title">Apa kata pengguna?</h2>
+          <p class="section-sub">
+            Review singkat dari pria Indonesia yang awalnya juga merasa kondisinya “sudah beda dari dulu”.
+          </p>
+
+          <div class="testi-grid">
+            <div class="testi-card">
+              <div class="testi-head">
+                <div>
+                  <div class="testi-name">Andi, 41</div>
+                  <div class="testi-city">Surabaya</div>
+                </div>
+                <div class="stars">★★★★★</div>
+              </div>
+              <p>Dulu saya kira ini cuma karena kerjaan. Ternyata setelah rutin pakai, badan terasa lebih siap dan saya nggak segugup dulu.</p>
+              <div class="before-after">Dulu: cepat capek • Sekarang: lebih stabil dan lebih pede</div>
+            </div>
+
+            <div class="testi-card">
+              <div class="testi-head">
+                <div>
+                  <div class="testi-name">Rizky, 38</div>
+                  <div class="testi-city">Bandung</div>
+                </div>
+                <div class="stars">★★★★★</div>
+              </div>
+              <p>Bukan tipe produk yang bikin heboh sesaat. Yang saya suka, perubahan terasa pelan tapi nyata. Tenaga lebih enak dijaga.</p>
+              <div class="before-after">Dulu: gampang drop • Sekarang: lebih siap jalani hari</div>
+            </div>
+
+            <div class="testi-card">
+              <div class="testi-head">
+                <div>
+                  <div class="testi-name">Budi, 47</div>
+                  <div class="testi-city">Jakarta</div>
+                </div>
+                <div class="stars">★★★★★</div>
+              </div>
+              <p>Usia memang bertambah, tapi bukan berarti harus pasrah. Saya merasa tubuh lebih enak diajak kerjasama dan lebih percaya diri.</p>
+              <div class="before-after">Dulu: ragu dan malas • Sekarang: lebih nyaman dan mantap</div>
+            </div>
+
+            <div class="testi-card">
+              <div class="testi-head">
+                <div>
+                  <div class="testi-name">Ilham, 44</div>
+                  <div class="testi-city">Makassar</div>
+                </div>
+                <div class="stars">★★★★★</div>
+              </div>
+              <p>Yang paling terasa buat saya itu stamina dan fokus. Hubungan dengan pasangan juga lebih baik karena saya sendiri lebih tenang.</p>
+              <div class="before-after">Dulu: sering menghindar • Sekarang: lebih dekat dan lebih yakin</div>
+            </div>
+
+            <div class="testi-card">
+              <div class="testi-head">
+                <div>
+                  <div class="testi-name">Dimas, 40</div>
+                  <div class="testi-city">Tangerang</div>
+                </div>
+                <div class="stars">★★★★★</div>
+              </div>
+              <p>Saya suka karena rasanya natural. Nggak bikin badan aneh, tapi lama-lama saya sadar respon tubuh jadi lebih konsisten.</p>
+              <div class="before-after">Dulu: naik turun • Sekarang: lebih stabil</div>
+            </div>
+
+            <div class="testi-card">
+              <div class="testi-head">
+                <div>
+                  <div class="testi-name">Hendra, 46</div>
+                  <div class="testi-city">Jakarta</div>
+                </div>
+                <div class="stars">★★★★★</div>
+              </div>
+              <p>Awalnya iseng coba karena promo. Ternyata justru jadi rutinitas yang saya pertahankan. Lebih bertenaga, lebih pede, lebih tenang.</p>
+              <div class="before-after">Dulu: kurang yakin • Sekarang: lebih siap dan nyaman</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="offer-wrap reveal">
+          <div class="offer-card highlight">
+            <span class="offer-badge">Penawaran khusus hari ini</span>
+            <h2 class="offer-title">Jangan tunggu sampai kondisi ini terasa makin normal.</h2>
+            <p class="offer-note">
+              Semakin lama dibiarkan, biasanya tubuh makin terbiasa dengan performa yang menurun. Banyak pria baru mulai bertindak saat rasa percaya dirinya sudah benar-benar terpukul.
+            </p>
+
+            <div class="price-box">
+              <div>
+                <div class="price-old">Harga normal Rp780.000</div>
+                <div class="price-new">Rp390.000</div>
+              </div>
+              <div class="discount-chip">Diskon 50%</div>
+            </div>
+
+            <div class="urgency">
+              Promo berlaku untuk batch hari ini. Setelah stok promo habis, harga bisa kembali normal.
+            </div>
+
+            <div style="margin-top:14px;">
+              <a class="btn scroll-to-form" href="#lead-form">Ambil Promo Sekarang</a>
+            </div>
+          </div>
+
+          <div class="offer-card">
+            <strong style="display:block;font-size:18px;margin-bottom:10px;">Kenapa sebaiknya pesan sekarang?</strong>
+            <p style="margin:0 0 12px;color:var(--muted);font-size:14px;">
+              Karena Anda tidak butuh janji kosong. Anda butuh langkah yang jelas dan cepat untuk mulai memperbaiki kondisi dari dalam.
+            </p>
+
+            <ul class="bullet-checks" style="margin-top:0;">
+              <li><span class="check">✓</span><span>Form cepat, hanya isi nama dan nomor telepon</span></li>
+              <li><span class="check">✓</span><span>Konsultasi gratis sebelum konfirmasi pesanan</span></li>
+              <li><span class="check">✓</span><span>Data aman dan tidak dipakai sembarangan</span></li>
+              <li><span class="check">✓</span><span>Promo diskon 50% membuat langkah pertama jauh lebih ringan</span></li>
+            </ul>
+
+            <div class="alert-box">
+              Kadang yang paling mahal bukan harga produk — tapi waktu yang hilang saat Anda terus menunda.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section form-section" id="lead-form">
+      <div class="container">
+        <div class="form-box reveal">
+          <span class="form-topline">Form pemesanan</span>
+          <h2 class="form-title">Isi data Anda sekarang dan dapatkan penawaran promo hari ini</h2>
+          <p class="form-sub">
+            Tim akan menghubungi Anda untuk konfirmasi. Prosesnya cepat, simpel, dan tanpa ribet.
+          </p>
+
+          <form class="lead-form" novalidate>
+            <div class="field">
+              <label for="main-name">Nama</label>
+              <input id="main-name" name="name" type="text" placeholder="Contoh: Andi" />
+            </div>
+
+            <div class="field">
+              <label for="main-phone">Nomor Telepon</label>
+              <input id="main-phone" name="phone" type="tel" inputmode="tel" placeholder="Contoh: 08xxxxxxxxxx" />
+            </div>
+
+            <button type="submit" class="btn">Konsultasi / Pesan Sekarang</button>
+
+            <div class="micro-trust">
+              <span>✔ Konsultasi gratis sebelum konfirmasi</span>
+              <span>✔ Data pribadi Anda aman</span>
+              <span>✔ Akan dikonfirmasi via telepon</span>
+              <span>✔ Stok promo terbatas hari ini</span>
+            </div>
+
+            <div class="form-message" aria-live="polite"></div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="split-card reveal">
+          <h2 class="section-title">Pertanyaan yang sering ditanyakan</h2>
+          <p class="section-sub">
+            Jawaban singkat untuk hal-hal yang biasanya ingin diketahui sebelum pesan.
+          </p>
+
+          <div class="faq-grid">
+            <div class="faq-item active">
+              <button class="faq-question" type="button">
+                <span>Apakah aman?</span>
+                <span class="faq-toggle">+</span>
+              </button>
+              <div class="faq-answer">
+                Healthpeak diformulasikan sebagai dukungan herbal alami. Tetap gunakan sesuai anjuran penggunaan yang berlaku pada produk.
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question" type="button">
+                <span>Kapan perubahan mulai terasa?</span>
+                <span class="faq-toggle">+</span>
+              </button>
+              <div class="faq-answer">
+                Tiap orang bisa berbeda, tapi banyak pengguna mulai merasa perubahan awal dalam beberapa hari hingga minggu pertama, lalu lebih terasa dengan penggunaan rutin 2–3 minggu.
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question" type="button">
+                <span>Untuk usia berapa?</span>
+                <span class="faq-toggle">+</span>
+              </button>
+              <div class="faq-answer">
+                Umumnya paling relevan untuk pria usia 30+, terutama yang mulai merasa energi, stamina, dan respon tubuhnya tidak seperti dulu.
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-question" type="button">
+                <span>Apakah ini obat instan?</span>
+                <span class="faq-toggle">+</span>
+              </button>
+              <div class="faq-answer">
+                Bukan. Healthpeak lebih tepat dilihat sebagai dukungan alami dari dalam, jadi hasil terbaik biasanya terasa dengan pemakaian yang konsisten.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-note">
+          Healthpeak — halaman informasi & pemesanan. Hasil penggunaan dapat berbeda pada tiap orang.
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <div class="sticky-cta" id="stickyCta">
+    <div class="sticky-inner">
+      <div class="sticky-copy">
+        <div class="sticky-title">Promo Healthpeak masih tersedia hari ini</div>
+        <div class="sticky-sub">Isi form sekarang untuk konsultasi / konfirmasi pesanan</div>
+      </div>
+      <button class="sticky-button scroll-to-form" type="button" data-target="#lead-form">Pesan Sekarang</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
